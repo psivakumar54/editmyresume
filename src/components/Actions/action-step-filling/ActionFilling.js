@@ -10,7 +10,6 @@ import Employment from '../../Form/employment-component/Employment';
 import Education from '../../Form/education-component/Education';
 import Language from '../../Form/languages-component/Languages';
 import Skill from '../../Form/skill-component/Skill'
-import Hobbies from '../../Form/hobbies-component/Hobbies'
 // Form Components
 import SimpleInput from '../../Form/simple-input/SimpleInput';
 import ImgUploadInput from '../../Form/img-upload-input/ImgUploadInput';
@@ -34,8 +33,7 @@ class ActionFilling extends Component {
       employments: [],
       educations: [],
       languages: [],
-      skills: [],
-      hobbies: []
+      skills: []
     }
     //  Binding  all functions to this context to be able to use them 
     this.aditionalDetailHandler = this.aditionalDetailHandler.bind(this);
@@ -44,8 +42,6 @@ class ActionFilling extends Component {
     this.newLanguageField = this.newLanguageField.bind(this);
     this.newSkillField = this.newSkillField.bind(this);
     this.skillsAdded = this.skillsAdded.bind(this);
-    this.newHobbiesField = this.newHobbiesField.bind(this);
-    this.hobbiesAdded = this.hobbiesAdded.bind(this);
     this.handleComponentDelete = this.handleComponentDelete.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     var AnalyticsObject = Analytics;
@@ -140,27 +136,6 @@ class ActionFilling extends Component {
       ])
     });
   }
-    // Add new hobbies field
-    newHobbiesField() {
-      let randomId = Math.floor(Math.random() * 300);
-      this.setState({
-        hobbies: this.state.hobbies.concat([
-          <Hobbies handleComponentDelete={this.handleComponentDelete} handleDelete={this.props.handleDelete} id={randomId} handleInputs={this.props.handleInputs} key={randomId} />
-        ])
-      });
-    }
-    // Handling Component Delete
-  handleComponentDelete(inputType, id) {
-    switch (inputType) {
-      case "Hobbies":
-        this.setState({
-          hobbies: []
-        })
-        break;
-      default:
-        break;
-    }
-  }
   // Handling Component Delete
   handleComponentDelete(inputType, id) {
     switch (inputType) {
@@ -180,14 +155,6 @@ class ActionFilling extends Component {
       skills.push(value);
     });
     return skills;
-  }
-  //  Listing all Hobbies History 
-  hobbiesAdded() {
-    let hobbies = []
-    this.state.hobbies.map((value, index) => {
-      hobbies.push(value);
-    });
-    return hobbies;
   }
   // Add new language field
   newLanguageField() {
@@ -296,16 +263,6 @@ class ActionFilling extends Component {
             <div className="additionalDetailsToggle">
               <img src={PlusIcon} alt="icon" />
               <span onClick={this.newSkillField} > Add  Skill </span>
-            </div>
-            {/* Extra Activities */}
-            <div className="sectionHeading">
-              <span className="sectionTitle">Extra Activities </span>
-              <p className="sectionDescription"> Please enter your other interests. </p>
-            </div>
-            {this.hobbiesAdded()}
-            <div className="additionalDetailsToggle">
-              <img src={PlusIcon} alt="icon" />
-              <span onClick={this.newHobbiesField} > Add  Hobbies </span>
             </div>
           </div>
         </form>

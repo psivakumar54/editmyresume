@@ -1,5 +1,5 @@
 .templateSelection {
-  width: 70%;
+  width: 90%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,11 +11,12 @@
     display: inline;
   }
   .templatesList {
-    height: 80%;
+    height: 85%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.4fr 0.4fr 0.4fr;
     overflow-y: scroll;
     width: 100%;
+    margin-bottom: 10px;
     .template {
       height: 300px;
       width: 200px;
@@ -23,6 +24,7 @@
       overflow: hidden;
       border-radius: 13px;
       margin: auto;
+      margin-top: 10px;
       img {
         max-width: 100%;
         min-height: 100%;
